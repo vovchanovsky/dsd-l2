@@ -1,0 +1,19 @@
+POST http://localhost:5001/fascade_service
+Content-Type: application/json
+
+{"msg": "first"}
+
+###
+POST http://localhost:5001/fascade_service
+Content-Type: application/json
+
+{"msg": "Hello world!"}
+
+###
+POST http://localhost:5001/fascade_service
+Content-Type: application/json
+
+{"msg": "This is example"}
+
+###
+GET http://localhost:5001/fascade_service
