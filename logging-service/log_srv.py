@@ -1,5 +1,7 @@
-import uuid
-from flask import Flask, request, redirect
+from flask import Flask, request
+import docker
+import hazelcast
+import sys
 
 app = Flask(__name__)
 
@@ -7,13 +9,27 @@ app = Flask(__name__)
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     if request.method == 'POST':
-        logs.update(request.json)
-        print(request.json)
+        req_data = request.json
+        print(req_data)
+        key = next(iter(req_data.keys()))
+        distributed_map.set(key, req_data[key])
         return ''
     else:
-        return ','.join(logs.values())
+        return ','.join(distributed_map.get_all(distributed_map.key_set().result()).result().values())
 
 
 if __name__ == '__main__':
-    logs = {}
-    app.run(port=5002, debug=True)
+    container = None
+    doc_client = docker.from_env()
+    try:
+        container = doc_client.containers.get(f"{sys.argv[1]}-hazelcast")
+        container.start()
+        client = hazelcast.HazelcastClient()
+        distributed_map = client.get_map("logs-map")
+        app.run(port=sys.argv[1], debug=True)
+    except:
+        print("Incorrect port number in args. Please restart the program.")
+    finally:
+        if container:
+            container.stop()
+        print("Good luck!")
