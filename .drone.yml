@@ -8,11 +8,11 @@ steps:
   commands:
   - pip install Flask
   - pip install requests
-  - pip install pytest
 
 - name: testing
   image: python
   commands:
+  - pip install pytest
   - python -m pytest
 
 - name: fascade
