@@ -19,19 +19,19 @@ steps:
   commands:
   - pip install Flask
   - pip install requests
-  - python ./fascade-service/fascade.py
+  - python -m fascade ./fascade-service/fascade.py
 
 - name: logging
   image: python
   commands:
   - pip install Flask
   - pip install requests
-  - python ./logging-service/log_srv.py
+  - python -m logging ./logging-service/log_srv.py
 
 - name: msg
   image: python
   commands:
   - pip install Flask
   - pip install requests
-  - python ./messages-service/msg-srv.py
+  - python -m msg ./messages-service/msg-srv.py
  
