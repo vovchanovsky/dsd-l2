@@ -13,7 +13,7 @@ steps:
 - name: testing
   image: python
   commands:
-  - pytest
+  - python -m pytest
 
 - name: fascade
   image: python
