@@ -3,29 +3,30 @@ type: docker
 name: default
 
 steps:
-- name: installation
-  image: python
-  commands:
-  - pip install Flask
-  - pip install requests
-
-- name: fascade
-  image: python
-  commands:
-  - python ./fascade-service/fascade.py
-
-- name: logging
-  image: python
-  commands:
-  - python ./logging-service/log_srv.py
-
-- name: msg
-  image: python
-  commands:
-  - python ./messages-service/msg-srv.py
- 
 - name: hello-wrld
   image: python
   commands:
   - echo hello
   - echo world
+
+- name: fascade
+  image: python
+  commands:
+  - pip install Flask
+  - pip install requests
+  - python ./fascade-service/fascade.py
+
+- name: logging
+  image: python
+  commands:
+  - pip install Flask
+  - pip install requests
+  - python ./logging-service/log_srv.py
+
+- name: msg
+  image: python
+  commands:
+  - pip install Flask
+  - pip install requests
+  - python ./messages-service/msg-srv.py
+ 
