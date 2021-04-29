@@ -1,0 +1,1 @@
+docker run -d -p 8126:8126/tcp -e DD_API_KEY=d83ec751b37bb28cb8f44adba0fa7b4b -e DD_SITE="datadoghq.com" gcr.io/datadoghq/agent:latest
