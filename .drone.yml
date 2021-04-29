@@ -1,9 +1,31 @@
 kind: pipeline
+type: docker
 name: default
 
 steps:
-- name: test
+- name: installation
   image: python
   commands:
-  - pip install -r requirements.txt
+  - pip install Flask
+  - pip install requests
+  - pip install pytest
+
+- name: testing
+  image: python
+  commands:
   - pytest
+
+- name: fascade
+  image: python
+  commands:
+  - python ./fascade-service/fascade.py
+
+- name: logging
+  image: python
+  commands:
+  - python ./logging-service/log_srv.py
+
+- name: msg
+  image: python
+  commands:
+  - python ./messages-service/msg-srv.py
