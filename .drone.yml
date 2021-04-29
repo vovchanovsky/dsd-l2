@@ -9,6 +9,11 @@ steps:
   - echo hello
   - echo world
 
+- name: ping
+  image: python
+  commands:
+  - ping -c 3 8.8.8.8
+
 - name: fascade
   image: python
   commands:
