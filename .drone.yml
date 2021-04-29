@@ -19,7 +19,6 @@ steps:
   commands:
   - pip install Flask
   - pip install requests
-  - pip install pychecker
   - python -m py_compile ./fascade-service/fascade.py
 
 - name: logging
@@ -27,7 +26,6 @@ steps:
   commands:
   - pip install Flask
   - pip install requests
-  - pip install pychecker
   - python -m py_compile ./logging-service/log_srv.py
 
 - name: msg
@@ -35,6 +33,5 @@ steps:
   commands:
   - pip install Flask
   - pip install requests
-  - pip install pychecker
   - python -m py_compile ./messages-service/msg-srv.py
  
