@@ -19,19 +19,22 @@ steps:
   commands:
   - pip install Flask
   - pip install requests
-  - python -m fascade ./fascade-service/fascade.py
+  - pip install pychecker
+  - python -m pychecker ./fascade-service/fascade.py
 
 - name: logging
   image: python
   commands:
   - pip install Flask
   - pip install requests
-  - python -m logging ./logging-service/log_srv.py
+  - pip install pychecker
+  - python -m pychecker ./logging-service/log_srv.py
 
 - name: msg
   image: python
   commands:
   - pip install Flask
   - pip install requests
-  - python -m msg ./messages-service/msg-srv.py
+  - pip install pychecker
+  - python -m pychecker./messages-service/msg-srv.py
  
