@@ -9,12 +9,6 @@ steps:
   - pip install Flask
   - pip install requests
 
-- name: testing
-  image: python
-  commands:
-  - pip install pytest
-  - python -m pytest
-
 - name: fascade
   image: python
   commands:
@@ -29,3 +23,9 @@ steps:
   image: python
   commands:
   - python ./messages-service/msg-srv.py
+ 
+- name: hello-wrld
+  image: python
+  commands:
+  - echo hello
+  - echo world
