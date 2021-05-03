@@ -26,7 +26,7 @@ if __name__ == '__main__':
         container.start()
         client = hazelcast.HazelcastClient()
         distributed_map = client.get_map("logs-map")
-        app.run(port=sys.argv[1], debug=True)
+        app.run(port=sys.argv[1], debug=True, use_reloader=False)
     except:
         print("Incorrect port number in args. Please restart the program.")
     finally:
